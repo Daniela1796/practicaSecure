@@ -1,4 +1,38 @@
 //Funciones de visualización para el formulario
+const loginParams = new URLSearchParams(window.location.search);
+const sessionNotice = document.getElementById("sessionNotice");
+const sessionNoticeText = document.getElementById("sessionNoticeText");
+
+if (loginParams.get("logout") === "success") {
+  sessionNoticeText.textContent = "Cierre de sesión exitoso.";
+  sessionNotice.classList.add("alert-success");
+  sessionNotice.classList.remove("d-none");
+} else if (loginParams.get("session") === "expired") {
+  sessionNoticeText.textContent =
+    "Tu sesión ha finalizado. Debes iniciar sesión nuevamente.";
+  sessionNotice.classList.add("alert-warning");
+  sessionNotice.classList.remove("d-none");
+}
+
+document
+  .getElementById("sessionNoticeClose")
+  .addEventListener("click", () => {
+    sessionNotice.classList.add("d-none");
+  });
+
+if (loginParams.has("logout") || loginParams.has("session")) {
+  loginParams.delete("logout");
+  loginParams.delete("session");
+  const remainingQuery = loginParams.toString();
+  window.history.replaceState(
+    null,
+    "",
+    window.location.pathname +
+      (remainingQuery ? `?${remainingQuery}` : "") +
+      window.location.hash
+  );
+}
+
 const togglePwd = document.getElementById("togglePwd");
       const clave = document.getElementById("clave");
       togglePwd.addEventListener("click", () => {

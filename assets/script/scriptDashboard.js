@@ -1,6 +1,12 @@
 
 
 // JS para la gráfica
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    window.location.reload();
+  }
+});
+
 window.addEventListener("load", () => {
   const canvas = document.getElementById("demoChart");
   if (!canvas || typeof Chart === "undefined") return;
@@ -110,3 +116,5 @@ window.addEventListener("load", () => {
           if (e.key === "Enter") sendMessage();
         });
       }
+
+      

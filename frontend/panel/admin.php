@@ -168,10 +168,7 @@ require_once __DIR__ . '/../../backend/auth_guard.php';
                   </p>
                   <ul class="list-unstyled text-start d-inline-block mb-2">
                     <li><strong>Correo:</strong> <span id="correo-usuario"><?= htmlspecialchars($_SESSION['correo'] ?? '', ENT_QUOTES, 'UTF-8') ?></span></li>
-                    <li><strong>Usuarios registrados:</strong> <?= $totalUsuarios ?></li>
-                    <li><strong>Administradores:</strong> <?= $conteo['admin'] ?></li>
-                    <li><strong>Vendedores:</strong> <?= $conteo['vendedor'] ?></li>
-                    <li><strong>Clientes:</strong> <?= $conteo['cliente'] ?></li>
+                    
                   </ul>
                 </div>
               </div>
